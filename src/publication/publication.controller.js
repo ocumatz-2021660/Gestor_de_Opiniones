@@ -2,6 +2,7 @@ import Publication from './publication.model.js';
 import { deleteImage } from '../../helpers/cloudinary-service.js';
 import { User } from '../users/user.model.js';
 import { formatPublication } from '../../helpers/publication-helpers.js';
+
 export const createPublication = async (req, res) => {
     try {
         const {
@@ -45,4 +46,43 @@ export const createPublication = async (req, res) => {
             error: error.message
         });
     }
-}
+};
+
+export const getPublications = async(req,res)=>{
+    try {
+
+    const { category, page = 1, limit = 10}= req.query;
+
+    const filter = {};
+    if(category){
+        filter.category_publication = category.toUpperCase();
+    }
+    const skip = (parseInt(page)-1)* parseInt(limit);
+    
+    const [publications, total] = await Promise.all([
+        Publication.find(filter)
+        .sort({title_publication: -1})
+        .skip(skip)
+        .limit(parseInt(limit)),
+        Publication.countDocuments(filter),
+    ]);
+
+    return res.status(200).json({
+        success: true,
+        data: publications.map(formatPublication),
+        pagination: {
+            total, 
+            page: parseInt(page),
+            limit: parseInt(limit),
+            totalPages: Math.ceil(total/parseInt(limit)),
+        }
+    })
+
+    }catch(error){
+        return res.status(400).json({
+            success: false,
+            message: 'Error al obtener las publicaciones',
+            error: error.message,
+        });
+    }
+};
