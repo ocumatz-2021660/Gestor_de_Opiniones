@@ -1,42 +1,41 @@
 import Publication from './publication.model.js';
-import { deleteImage}from '../../helpers/cloudinary-service.js';
-import {User} from '../users/user.model.js';
-
-
-export const createPublication = async (req, res) =>{
-    try{
+import { deleteImage } from '../../helpers/cloudinary-service.js';
+import { User } from '../users/user.model.js';
+import { formatPublication } from '../../helpers/publication-helpers.js';
+export const createPublication = async (req, res) => {
+    try {
         const {
             author_publication,
             title_publication,
-            category_publication, 
-            content_publication, 
-            } = req.body;
-            //para comparar si tiene algun archivo o no
-            const image_publication = req.file?.path || '';
+            category_publication,
+            content_publication,
+        } = req.body;
+        //para comparar si tiene algun archivo o no
+        const image_publication = req.file?.path || '';
 
-            const publication = await Publication.create({
-                author_publication,
-                title_publication,
-                category_publication, 
-                content_publication, 
-                image_publication   
-            });
+        const publication = await Publication.create({
+            author_publication,
+            title_publication,
+            category_publication,
+            content_publication,
+            image_publication
+        });
 
-            return res.status(201).json({
-                success: true,
-                message: 'Publicacion creada exitosamente',                
-            })
-
+        return res.status(201).json({
+            success: true,
+            message: 'Publicacion creada exitosamente',
+            data: formatPublication(publication),
+        })
         const usuarioExistente = await User.findByPk(author_publication);
-        if(!usuarioExistente){
+        if (!usuarioExistente) {
             return res.status(400).json({
                 success: false,
                 message: 'No existe el author de la publicacion'
             });
         }
-    }catch(error){
+    } catch (error) {
 
-        if(req.file?.path){
+        if (req.file?.path) {
             await deleteImage(req.file.path);
         }
 

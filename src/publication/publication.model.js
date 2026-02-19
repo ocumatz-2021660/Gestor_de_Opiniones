@@ -38,7 +38,7 @@ const publicationSchema = new mongoose.Schema(
         },
         //Campo opcional para agregar imagen
         image_publication: {
-            type: DataTypes.String(512),
+            type: String,
             defaultValue: '',
             field: 'image_publication',
         }
