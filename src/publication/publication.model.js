@@ -4,6 +4,13 @@ import mongoose from 'mongoose';
 
 const publicationSchema = new mongoose.Schema(
     {
+        author_publication: {
+            type: String,
+            ref: 'User',
+            required: true
+
+        },
+
         title_publication: {
             type: String,
             required: [true, 'The title of publication is required'],
@@ -42,6 +49,6 @@ const publicationSchema = new mongoose.Schema(
     versionKey: false
 }
 );
-publicationSchema.index({category_publication: 1});
+publicationSchema.index({ category_publication: 1 });
 
 export default mongoose.model('Publication', publicationSchema);
