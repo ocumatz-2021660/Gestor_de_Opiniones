@@ -84,6 +84,11 @@ export const uploadProfileImage = createCloudinaryUploader(
   process.env.CLOUDINARY_FOLDER || 'proyectobancario/profiles'
 );
 
+// Uploader para imágenes de publicaciones
+export const uploadPublicationImage = createCloudinaryUploader(
+  process.env.CLOUDINARY_PUBLICATIONS_FOLDER || 'proyectobancario/publications'
+);
+
 // Middleware para manejar errores de multer de forma amigable
 export const handleCloudinaryUploadError = (error, req, res, next) => {
   if (error instanceof multer.MulterError) {
