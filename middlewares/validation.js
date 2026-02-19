@@ -62,6 +62,16 @@ export const validateRegister = [
     .withMessage('La contraseña es obligatoria')
     .isLength({ min: 8, max: 255 })
     .withMessage('La contraseña debe tener entre 8 y 255 caracteres'),
+  
+    body('confirmPassword')
+    .notEmpty()
+    .withMessage('La confirmación de contraseña es obligatoria')
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('La confirmación de contraseña no coincide con la contraseña');
+      }
+      return true;
+    }),
 
   body('phone')
     .notEmpty()

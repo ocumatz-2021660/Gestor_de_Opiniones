@@ -1,0 +1,310 @@
+{
+  "info": {
+    "_postman_id": "1f03fb4a-c481-483f-80df-7b7e17049497",
+    "name": "Gestior_Opiniones_Laboratorio_2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48332462",
+    "_collection_link": "https://go.postman.co/collection/48332462-1f03fb4a-c481-483f-80df-7b7e17049497?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AUTENTICACIÓN",
+      "item": [
+        {
+          "name": "USUARIOS",
+          "item": [
+            {
+              "name": "AGREGAR_USUARIO",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Sebastian",
+                      "type": "text",
+                      "uuid": "f99b6ad8-852f-499b-8bad-1e89d13d2031"
+                    },
+                    {
+                      "key": "surname",
+                      "value": "Lopez",
+                      "type": "text",
+                      "uuid": "4a003663-8433-4202-9ada-b839dec79694"
+                    },
+                    {
+                      "key": "username",
+                      "value": "ElSebasPro",
+                      "type": "text",
+                      "uuid": "3ca4f2db-f9cc-44f2-8de7-a41dda62d2eb"
+                    },
+                    {
+                      "key": "email",
+                      "value": "elsebastian259@gmail.com",
+                      "type": "text",
+                      "uuid": "de609a3c-33c9-4af7-9bf1-6a9f0727b5e0"
+                    },
+                    {
+                      "key": "password",
+                      "value": "24489607",
+                      "type": "text",
+                      "uuid": "0c7b2895-7a58-4422-93cc-cc23798a8294"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "66602221",
+                      "type": "text",
+                      "uuid": "63bc50fe-4762-4900-b87f-882e3fc1fd94"
+                    },
+                    {
+                      "key": "profilePicture",
+                      "type": "file",
+                      "uuid": "30f0b58e-d5c9-4368-b4f1-bc62cb53c9c7",
+                      "src": "/C:/Users/Clara Lopez/Desktop/sebas/perro waos.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:3005/api/v1/auth/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3005",
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "INICIAR_SESION",
+          "item": [
+            {
+              "name": "LOGIN",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"emailOrUsername\": \"ElSebasPro\",\r\n  \"password\": \"24489607\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3005/api/v1/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3005",
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "VERIFICACIÓN_EMAIL",
+          "item": [
+            {
+              "name": "VERIFICAR_EMAIL",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"token\": \"dRVTGbc-wMW6rxIer2dvW4pP3r3sN7sxw5RgHJLxTJ4\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3005/api/v1/auth/verify-email",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3005",
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "verify-email"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "FORGOTE_PASSWORD",
+          "item": [
+            {
+              "name": "VERIFI_ACOUNT",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"elsebastian259@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3005/api/v1/auth/forgot-password",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3005",
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "forgot-password"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "NEW_PASSWORD",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"token\": \"0lcvvmkLulRftXyLxFa8Kl8-WrRarRyo1P3WJ0NR55k\",\r\n  \"newPassword\": \"24489607\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3005/api/v1/auth/reset-password",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3005",
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "reset-password"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PERFIL",
+      "item": [
+        {
+          "name": "VER_PERFIL",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/auth/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BUSCAR_ID",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n     \"userId\": \"usr_TDvq1DCeKAH3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/auth/profile/by-id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "profile",
+                "by-id"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
