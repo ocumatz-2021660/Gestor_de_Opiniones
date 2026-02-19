@@ -5,6 +5,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './db.js';
+import { dbConnection as dbMongoConnection } from './dbMongo.js';
 // Ensure models are registered before DB sync
 import '../src/users/user.model.js';
 import '../src/auth/role.model.js';
@@ -37,7 +38,7 @@ const routes = (app) => {
     res.status(200).json({
       status: 'Healthy',
       timestamp: new Date().toISOString(),
-      service: 'Gestion Restaurantes Authentication Service',
+      service: 'Proyecto Bancario Authentication Service',
     });
   });
   // 404 handler (standardized)
@@ -50,7 +51,14 @@ export const initServer = async () => {
   app.set('trust proxy', 1);
 
   try {
+    // Conectar PostgreSQL
     await dbConnection();
+    console.log('✅ PostgreSQL connected successfully');
+    
+    // Conectar MongoDB
+    await dbMongoConnection();
+    console.log('✅ MongoDB connected successfully');
+    
     // Seed essential data (roles)
     const { seedRoles } = await import('../helpers/role-seed.js');
     await seedRoles();
@@ -60,11 +68,11 @@ export const initServer = async () => {
     app.use(errorHandler);
 
     app.listen(PORT, () => {
-      console.log(`Gestion Restaurantes Auth Server running on port ${PORT}`);
+      console.log(`Proyecto Bancario Auth Server running on port ${PORT}`);
       console.log(`Health check: http://localhost:${PORT}${BASE_PATH}/health`);
     });
   } catch (err) {
-    console.error(`Error starting Gestion Restaurantes Auth Server: ${err.message}`);
+    console.error(`Error starting Proyecto Bancario Auth Server: ${err.message}`);
     process.exit(1);
   }
 };

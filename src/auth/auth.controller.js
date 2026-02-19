@@ -8,13 +8,14 @@ import {
 } from '../../helpers/auth-operations.js';
 import { getUserProfileHelper } from '../../helpers/profile-operations.js';
 import { asyncHandler } from '../../middlewares/server-genericError-handler.js';
+import path from 'path';
 
 export const register = asyncHandler(async (req, res) => {
   try {
-    // Agregar la imagen de perfil si fue subida
+
     const userData = {
       ...req.body,
-      profilePicture: req.file ? req.file.path : null,
+      profilePicture: req.file ? path.resolve(req.file.path) : null,
     };
 
     const result = await registerUserHelper(userData);
