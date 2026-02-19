@@ -303,6 +303,37 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "ACTUALIZAR_PERFIL",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"emailOrUsername\": \"ElSebasPro\",\r\n  \"password\": \"24489607\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/auth/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     }
