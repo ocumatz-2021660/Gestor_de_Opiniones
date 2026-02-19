@@ -5,7 +5,14 @@ import {
   authRateLimit,
   requestLimit,
 } from '../../middlewares/request-limit.js';
-import { upload, handleUploadError } from '../../helpers/file-upload.js';
+import {
+  uploadProfileImage,
+  handleCloudinaryUploadError,
+} from '../../middlewares/cloudinary-uploader.js';
+import {
+  cleanUploaderFileOnFinish,
+  deleteFileOnError,
+} from '../../middlewares/delete-file-on-error.js';
 import {
   validateRegister,
   validateLogin,
@@ -13,6 +20,7 @@ import {
   validateResendVerification,
   validateForgotPassword,
   validateResetPassword,
+  validateUpdateProfile,
 } from '../../middlewares/validation.js';
 
 const router = Router();
@@ -72,10 +80,12 @@ const router = Router();
 router.post(
   '/register',
   authRateLimit,
-  upload.single('profilePicture'),
-  handleUploadError,
+  uploadProfileImage.single('profilePicture'), // Sube directamente a Cloudinary (opcional)
+  handleCloudinaryUploadError,                  // Maneja errores de multer/tipo de archivo
+  cleanUploaderFileOnFinish,                    // Limpia Cloudinary si el request falla
   validateRegister,
-  authController.register
+  authController.register,
+  deleteFileOnError                             // Limpia Cloudinary si hay error no capturado
 );
 
 /**
@@ -288,5 +298,21 @@ router.get('/profile', validateJWT, authController.getProfile);
  *         description: Usuario no encontrado
  */
 router.post('/profile/by-id', requestLimit, authController.getProfileById);
+
+/**
+ * PUT /api/v1/auth/profile
+ * Actualiza el perfil del usuario autenticado.
+ * Requiere JWT. La foto de perfil es opcional.
+ */
+router.put(
+  '/profile',
+  validateJWT,                                    // Debe estar autenticado
+  uploadProfileImage.single('profilePicture'),    // Foto opcional → sube a Cloudinary
+  handleCloudinaryUploadError,                    // Maneja errores de tipo/tamaño
+  cleanUploaderFileOnFinish,                      // Limpia Cloudinary si el request falla
+  validateUpdateProfile,                          // Valida los campos del body
+  authController.updateProfile,                   // Controlador
+  deleteFileOnError                               // Limpia si explota un error
+);
 
 export default router;
