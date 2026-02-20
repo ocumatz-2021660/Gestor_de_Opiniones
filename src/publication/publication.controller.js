@@ -127,6 +127,12 @@ export const updatePublication = async (req, res) => {
                 message: 'No se encontro la publicacion',
             });
         }
+        if (publication.author_publication !== req.userId) {
+            return res.status(403).json({
+                success: false,
+                message: 'No tienes permiso para editar esta publicación',
+            });
+        }
 
         const {
             title_publication,
