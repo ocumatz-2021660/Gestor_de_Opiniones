@@ -42,3 +42,28 @@ export const createComment = async (req, res) => {
         });
     }
 };
+
+export const getComments = async (req, res) => {
+    try {
+        // Puedes filtrar por publicación si lo mandan por query: ?publicationId=...
+        const { publicationId } = req.query;
+        const filter = publicationId ? { publication_comment: publicationId } : {};
+
+        const comments = await Comment.find(filter)
+            .sort({ createdAt: -1 }) // Los más recientes primero
+            .populate('publication_comment', 'title_publication'); // Trae el título de la publicación de Mongo
+
+        return res.status(200).json({
+            success: true,
+            total: comments.length,
+            data: comments
+        });
+
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: 'Error al obtener los comentarios',
+            error: error.message
+        });
+    }
+};
