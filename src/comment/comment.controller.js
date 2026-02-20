@@ -45,7 +45,6 @@ export const createComment = async (req, res) => {
 
 export const getComments = async (req, res) => {
     try {
-        // Puedes filtrar por publicación si lo mandan por query: ?publicationId=...
         const { publicationId } = req.query;
         const filter = publicationId ? { publication_comment: publicationId } : {};
 
@@ -63,6 +62,32 @@ export const getComments = async (req, res) => {
         return res.status(400).json({
             success: false,
             message: 'Error al obtener los comentarios',
+            error: error.message
+        });
+    }
+};
+
+export const updateComment = async (req, res) => {
+    try {
+        const { id } = req.params; // ID del comentario en Mongo
+        const { content_comment, comment_rating } = req.body;
+
+        const updatedComment = await Comment.findByIdAndUpdate(
+            id,
+            { content_comment, comment_rating },
+            { new: true, runValidators: true } 
+        );
+
+        return res.status(200).json({
+            success: true,
+            message: 'Comentario actualizado correctamente',
+            data: updatedComment
+        });
+
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: 'Error al actualizar el comentario',
             error: error.message
         });
     }
