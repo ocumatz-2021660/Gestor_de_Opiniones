@@ -30,3 +30,4 @@ const commentSchema = new mongoose.Schema(
         versionKey: false
     }
 );
+export default mongoose.model('Comment', commentSchema);
