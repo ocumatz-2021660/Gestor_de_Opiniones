@@ -20,7 +20,8 @@ export const validateCommentOwnership = async (req, res, next) =>{
                 message: 'Error: you dont have authorization to perform this action',                
             });
         }
-
+        //continua con el processo
+        next();
     }catch(error){
         return res.status(500).json({
             success: false,
