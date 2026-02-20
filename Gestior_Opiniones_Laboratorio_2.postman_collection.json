@@ -8,62 +8,24 @@
   },
   "item": [
     {
-      "name": "AUTENTICACIÓN",
+      "name": "AUTH",
       "item": [
         {
-          "name": "USUARIOS",
+          "name": "USERS",
           "item": [
             {
-              "name": "AGREGAR_USUARIO",
+              "name": "ADD_USER",
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "name",
-                      "value": "Sebastian",
-                      "type": "text",
-                      "uuid": "f99b6ad8-852f-499b-8bad-1e89d13d2031"
-                    },
-                    {
-                      "key": "surname",
-                      "value": "Lopez",
-                      "type": "text",
-                      "uuid": "4a003663-8433-4202-9ada-b839dec79694"
-                    },
-                    {
-                      "key": "username",
-                      "value": "ElSebasPro",
-                      "type": "text",
-                      "uuid": "3ca4f2db-f9cc-44f2-8de7-a41dda62d2eb"
-                    },
-                    {
-                      "key": "email",
-                      "value": "elsebastian259@gmail.com",
-                      "type": "text",
-                      "uuid": "de609a3c-33c9-4af7-9bf1-6a9f0727b5e0"
-                    },
-                    {
-                      "key": "password",
-                      "value": "24489607",
-                      "type": "text",
-                      "uuid": "0c7b2895-7a58-4422-93cc-cc23798a8294"
-                    },
-                    {
-                      "key": "phone",
-                      "value": "66602221",
-                      "type": "text",
-                      "uuid": "63bc50fe-4762-4900-b87f-882e3fc1fd94"
-                    },
-                    {
-                      "key": "profilePicture",
-                      "type": "file",
-                      "uuid": "30f0b58e-d5c9-4368-b4f1-bc62cb53c9c7",
-                      "src": "/C:/Users/Clara Lopez/Desktop/sebas/perro waos.jpg"
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Cumatz\",\r\n    \"surname\": \"Lopez\",\r\n    \"username\": \"ocumatz\",\r\n    \"email\": \"ocumatz-2021660@kinal.edu.gt\",\r\n    \"password\": \"Password123!\",\r\n    \"confirmPassword\": \"Password123!\",\r\n    \"phone\": \"55895932\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
                     }
-                  ]
+                  }
                 },
                 "url": {
                   "raw": "http://localhost:3005/api/v1/auth/register",
@@ -94,7 +56,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"emailOrUsername\": \"ElSebasPro\",\r\n  \"password\": \"24489607\"\r\n}",
+                  "raw": "{\r\n  \"emailOrUsername\": \"ocumatz\",\r\n  \"password\": \"Password123!\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -121,16 +83,16 @@
           ]
         },
         {
-          "name": "VERIFICACIÓN_EMAIL",
+          "name": "VERIFY_EMAIL",
           "item": [
             {
-              "name": "VERIFICAR_EMAIL",
+              "name": "VERIFY_EMAIL",
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"token\": \"dRVTGbc-wMW6rxIer2dvW4pP3r3sN7sxw5RgHJLxTJ4\"\r\n}",
+                  "raw": "{\r\n  \"token\": \"1lTwHhpJ4y4Pho5P18WinELHHroa-1iNBpTugntkpl4\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -166,7 +128,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"email\": \"elsebastian259@gmail.com\"\r\n}",
+                  "raw": "{\r\n    \"email\": \"ocumatz-2021660@kinal.edu.gt\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -197,7 +159,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"token\": \"0lcvvmkLulRftXyLxFa8Kl8-WrRarRyo1P3WJ0NR55k\",\r\n  \"newPassword\": \"24489607\"\r\n}",
+                  "raw": "{\r\n  \"token\": \"FUsttZrZfpPo-bVh1XV9tYbzZD_G3SnYfA7hV5c0DkM\",\r\n  \"newPassword\": \"24489607\",\r\n  \"confirmPassword\": \"24489607\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -229,7 +191,7 @@
       "name": "PERFIL",
       "item": [
         {
-          "name": "VER_PERFIL",
+          "name": "GET_PERFIL",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -273,7 +235,7 @@
           "response": []
         },
         {
-          "name": "BUSCAR_ID",
+          "name": "GET_PERFIL_BY_IID",
           "request": {
             "method": "POST",
             "header": [],
@@ -305,18 +267,48 @@
           "response": []
         },
         {
-          "name": "ACTUALIZAR_PERFIL",
+          "name": "UPDATE_PERFIL",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PUT",
             "header": [],
             "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"emailOrUsername\": \"ElSebasPro\",\r\n  \"password\": \"24489607\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Sebastian",
+                  "type": "text",
+                  "uuid": "1d647d3d-6808-48dc-85cf-e97349fed5e2"
+                },
+                {
+                  "key": "surname",
+                  "value": "Lopez",
+                  "type": "text",
+                  "uuid": "67b89dbb-798a-41ca-997f-0c5a5731ff85"
+                },
+                {
+                  "key": "phone",
+                  "value": "66602221",
+                  "type": "text",
+                  "uuid": "a0b58fc2-b70e-48b2-8517-1f6a241a9120"
+                },
+                {
+                  "key": "profilePicture",
+                  "type": "file",
+                  "uuid": "9faf6cdc-53f9-46cd-887c-02956242b9da",
+                  "src": "/C:/Users/Clara Lopez/Desktop/sebas/perro waos.jpg"
                 }
-              }
+              ]
             },
             "url": {
               "raw": "http://localhost:3005/api/v1/auth/profile",
@@ -330,6 +322,326 @@
                 "v1",
                 "auth",
                 "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PUBLICATION",
+      "item": [
+        {
+          "name": "ADD_PUBLICATION",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfaXJIQUhSbndaTnFjIiwianRpIjoiNWFjOTE4MzUtOGFiMi00MGM5LWIwMGQtZjZmODdiZTdjOTllIiwiaWF0IjoxNzcxNTQ4MzYzLCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxNTUwMTYzLCJhdWQiOiJBdXRoU2VydmljZSIsImlzcyI6IkF1dGhTZXJ2aWNlIn0.7jyeLRF_73EBTpdBgihwDMISa45m6LM0pKJKHUknP1A",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "author_publication",
+                  "value": "usr_irHAHRnwZNqc",
+                  "type": "text",
+                  "uuid": "0e8206c6-b920-4a60-a199-270b5d1738c2"
+                },
+                {
+                  "key": "title_publication",
+                  "value": "Testeando Actualizacion",
+                  "type": "text",
+                  "uuid": "a6295671-95a3-4d21-a854-f0041b85355b"
+                },
+                {
+                  "key": "category_publication",
+                  "value": "TECHNOLOGY",
+                  "type": "text",
+                  "uuid": "deb62a1c-dadf-4341-aaac-df799e86ad32"
+                },
+                {
+                  "key": "content_publication",
+                  "value": "Primera comparacion de seguridad entre 2 cuentas",
+                  "type": "text",
+                  "uuid": "01eec973-684e-4be2-8e45-b3ba0c6c9f47"
+                },
+                {
+                  "key": "image_publication",
+                  "type": "file",
+                  "uuid": "1581a878-a5d4-4e7a-973d-dcc414337bbc",
+                  "src": "/C:/Users/Clara Lopez/Desktop/sebas/perro waos.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/publications/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "publications",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_ALL_PUBLICATIONS",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "author_publication",
+                  "value": "usr_MZ8N98zTKihA",
+                  "type": "text",
+                  "uuid": "0e8206c6-b920-4a60-a199-270b5d1738c2"
+                },
+                {
+                  "key": "title_publication",
+                  "value": "Primera Publicacion",
+                  "type": "text",
+                  "uuid": "a6295671-95a3-4d21-a854-f0041b85355b"
+                },
+                {
+                  "key": "category_publication",
+                  "value": "TECHNOLOGY",
+                  "type": "text",
+                  "uuid": "deb62a1c-dadf-4341-aaac-df799e86ad32"
+                },
+                {
+                  "key": "content_publication",
+                  "value": "Mi primera publicacion en mi programa (hola mundo xd)",
+                  "type": "text",
+                  "uuid": "01eec973-684e-4be2-8e45-b3ba0c6c9f47"
+                },
+                {
+                  "key": " image_publication",
+                  "type": "file",
+                  "uuid": "1581a878-a5d4-4e7a-973d-dcc414337bbc",
+                  "src": "/C:/Info2026/Gestor_de_Opiniones/uploads/2021564 (1).jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/publications/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "publications",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_PUBLICATION_BY_ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "author_publication",
+                  "value": "usr_MZ8N98zTKihA",
+                  "type": "text",
+                  "uuid": "0e8206c6-b920-4a60-a199-270b5d1738c2"
+                },
+                {
+                  "key": "title_publication",
+                  "value": "Primera Publicacion",
+                  "type": "text",
+                  "uuid": "a6295671-95a3-4d21-a854-f0041b85355b"
+                },
+                {
+                  "key": "category_publication",
+                  "value": "TECHNOLOGY",
+                  "type": "text",
+                  "uuid": "deb62a1c-dadf-4341-aaac-df799e86ad32"
+                },
+                {
+                  "key": "content_publication",
+                  "value": "Mi primera publicacion en mi programa (hola mundo xd)",
+                  "type": "text",
+                  "uuid": "01eec973-684e-4be2-8e45-b3ba0c6c9f47"
+                },
+                {
+                  "key": " image_publication",
+                  "type": "file",
+                  "uuid": "1581a878-a5d4-4e7a-973d-dcc414337bbc",
+                  "src": "/C:/Info2026/Gestor_de_Opiniones/uploads/2021564 (1).jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/publications/6997af3769ad8ca1ab9d105c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "publications",
+                "6997af3769ad8ca1ab9d105c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE_PUBLICATION_BY_ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfTVo4Tjk4elRLaWhBIiwianRpIjoiZWY4MDgxMWEtMzRjYS00ZDk1LWIxZmMtNDBiYjc3YzAyZjVkIiwiaWF0IjoxNzcxNTQ4NzExLCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxNTUwNTExLCJhdWQiOiJBdXRoU2VydmljZSIsImlzcyI6IkF1dGhTZXJ2aWNlIn0.-SIeea01PqBnZVWjB05_tZf11oqUcIv3bXzvYH_fLtw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"title_publication\": \"Primera Publicacion actualizada\",\r\n    \"category_publication\": \"TECHNOLOGY\",\r\n    \"content_publication\": \"Mi primera publicacion actualizada en mi programa (adios mundo dx)\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/publications/6997909ec8572a9fe4569a9b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "publications",
+                "6997909ec8572a9fe4569a9b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE_PUBLICATION",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "author_publication",
+                  "value": "usr_MZ8N98zTKihA",
+                  "type": "text",
+                  "uuid": "0e8206c6-b920-4a60-a199-270b5d1738c2"
+                },
+                {
+                  "key": "title_publication",
+                  "value": "Primera Publicacion",
+                  "type": "text",
+                  "uuid": "a6295671-95a3-4d21-a854-f0041b85355b"
+                },
+                {
+                  "key": "category_publication",
+                  "value": "TECHNOLOGY",
+                  "type": "text",
+                  "uuid": "deb62a1c-dadf-4341-aaac-df799e86ad32"
+                },
+                {
+                  "key": "content_publication",
+                  "value": "Mi primera publicacion en mi programa (hola mundo xd)",
+                  "type": "text",
+                  "uuid": "01eec973-684e-4be2-8e45-b3ba0c6c9f47"
+                },
+                {
+                  "key": " image_publication",
+                  "type": "file",
+                  "uuid": "1581a878-a5d4-4e7a-973d-dcc414337bbc",
+                  "src": "/C:/Info2026/Gestor_de_Opiniones/uploads/2021564 (1).jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/publications/699790d3c8572a9fe4569a9d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "publications",
+                "699790d3c8572a9fe4569a9d"
               ]
             }
           },
