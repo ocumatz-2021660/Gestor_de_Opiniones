@@ -5,7 +5,7 @@ import mongoose, { version } from 'mongoose';
 const commentSchema = new mongoose.Schema(
     {
         author_comment:{
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             ref: 'User',
             required: [true,'The author of comment is required'],
         },
@@ -19,7 +19,7 @@ const commentSchema = new mongoose.Schema(
             maxlength: 250,
             required: [true, 'The content of comment is required'],
         },
-        comment_raiting:{
+        comment_rating:{
             type: Number,
             min: 1,
             max: 5,
