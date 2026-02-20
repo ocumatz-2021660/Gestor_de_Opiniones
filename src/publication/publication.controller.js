@@ -48,37 +48,37 @@ export const createPublication = async (req, res) => {
     }
 };
 
-export const getPublications = async(req,res)=>{
+export const getPublications = async (req, res) => {
     try {
 
-    const { category, page = 1, limit = 10}= req.query;
+        const { category, page = 1, limit = 10 } = req.query;
 
-    const filter = {};
-    if(category){
-        filter.category_publication = category.toUpperCase();
-    }
-    const skip = (parseInt(page)-1)* parseInt(limit);
-    
-    const [publications, total] = await Promise.all([
-        Publication.find(filter)
-        .sort({title_publication: -1})
-        .skip(skip)
-        .limit(parseInt(limit)),
-        Publication.countDocuments(filter),
-    ]);
-
-    return res.status(200).json({
-        success: true,
-        data: publications.map(formatPublication),
-        pagination: {
-            total, 
-            page: parseInt(page),
-            limit: parseInt(limit),
-            totalPages: Math.ceil(total/parseInt(limit)),
+        const filter = {};
+        if (category) {
+            filter.category_publication = category.toUpperCase();
         }
-    })
+        const skip = (parseInt(page) - 1) * parseInt(limit);
 
-    }catch(error){
+        const [publications, total] = await Promise.all([
+            Publication.find(filter)
+                .sort({ title_publication: -1 })
+                .skip(skip)
+                .limit(parseInt(limit)),
+            Publication.countDocuments(filter),
+        ]);
+
+        return res.status(200).json({
+            success: true,
+            data: publications.map(formatPublication),
+            pagination: {
+                total,
+                page: parseInt(page),
+                limit: parseInt(limit),
+                totalPages: Math.ceil(total / parseInt(limit)),
+            }
+        })
+
+    } catch (error) {
         return res.status(400).json({
             success: false,
             message: 'Error al obtener las publicaciones',
@@ -87,12 +87,12 @@ export const getPublications = async(req,res)=>{
     }
 };
 
-export const getPublicationById = async (req, res) =>{
-    try{
-        const {id} = req.params;
+export const getPublicationById = async (req, res) => {
+    try {
+        const { id } = req.params;
 
         const publication = await Publication.findById(id);
-        if(!publication){
+        if (!publication) {
             return res.status(404).json({
                 success: false,
                 message: 'No se encontro la publicacion',
@@ -103,7 +103,7 @@ export const getPublicationById = async (req, res) =>{
             data: formatPublication(publication),
         });
 
-    }catch(error){
+    } catch (error) {
         return res.status(400).json({
             success: false,
             message: 'Error al obtener la publicacion',
@@ -111,3 +111,61 @@ export const getPublicationById = async (req, res) =>{
         });
     }
 }
+
+export const updatePublication = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+
+        const publication = await Publication.findById(id);
+        if (!publication) {
+            if (req.file?.path) {
+                await deleteImage(req.file.path).catch(() => { });
+            }
+            return res.status(404).json({
+                success: false,
+                message: 'No se encontro la publicacion',
+            });
+        }
+
+        const {
+            title_publication,
+            category_publication,
+            content_publication,
+        } = req.body;
+        //solo si estan dentro del body
+        if (title_publication !== undefined)
+            publication.title_publication = title_publication;
+        if (category_publication !== undefined)
+            publication.category_publication = category_publication;
+        if (content_publication !== undefined)
+            publication.content_publication = content_publication;
+
+        if (req.file?.path) {
+            if (publication.image_publication) {
+                await deleteImage(publication.image_publication).catch(() => { });
+            }
+            publication.image_publication = req.file.path;
+        }
+        if (req.body.remove_image === 'true' && !req.file) {
+            if (publication.image_publication) {
+                await deleteImage(publication.image_publication).catch(() => { });
+            }
+            //por si esta vasio
+            publication.image_publication = '';
+        }
+        await publication.save();
+        return res.status(200).json({
+           success: true,
+           message: 'Actualizacion exitosa' ,
+           data: formatPublication(publication),
+        });
+
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: 'Error al acutalizar publicacion',
+            error: error.message,
+        })
+    }
+};
