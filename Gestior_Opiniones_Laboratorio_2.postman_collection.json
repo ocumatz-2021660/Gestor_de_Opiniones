@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "1f03fb4a-c481-483f-80df-7b7e17049497",
+    "_postman_id": "af8bc106-7f75-4d8c-887a-9d7d7ce5d6ea",
     "name": "Gestior_Opiniones_Laboratorio_2",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "48332462",
-    "_collection_link": "https://go.postman.co/collection/48332462-1f03fb4a-c481-483f-80df-7b7e17049497?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/48332462-af8bc106-7f75-4d8c-887a-9d7d7ce5d6ea?source=collection_link"
   },
   "item": [
     {
@@ -92,7 +92,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"token\": \"1lTwHhpJ4y4Pho5P18WinELHHroa-1iNBpTugntkpl4\"\r\n}",
+                  "raw": "{\r\n  \"token\": \"Jn3y-xb-bIcmTrSrZj0RCPQUeDiVU9Mlh9h1H-Jg8Co\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -340,7 +340,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfaXJIQUhSbndaTnFjIiwianRpIjoiNWFjOTE4MzUtOGFiMi00MGM5LWIwMGQtZjZmODdiZTdjOTllIiwiaWF0IjoxNzcxNTQ4MzYzLCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxNTUwMTYzLCJhdWQiOiJBdXRoU2VydmljZSIsImlzcyI6IkF1dGhTZXJ2aWNlIn0.7jyeLRF_73EBTpdBgihwDMISa45m6LM0pKJKHUknP1A",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfMzJUWWVFdHYyQVNQIiwianRpIjoiNTExMTM2NzQtMzlmYS00OGQwLThmYTQtOTBiOTFhYmExN2RiIiwiaWF0IjoxNzcxNjA0NTk5LCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxNjA2Mzk5LCJhdWQiOiJBdXRoU2VydmljZSIsImlzcyI6IkF1dGhTZXJ2aWNlIn0.gxzUhzaIuMDwMGxS6h8pcLQcmN20xFR2ZRePCxX7Wgg",
                   "type": "string"
                 }
               ]
@@ -352,13 +352,13 @@
               "formdata": [
                 {
                   "key": "author_publication",
-                  "value": "usr_irHAHRnwZNqc",
+                  "value": "usr_5KS73nGz6Tpp",
                   "type": "text",
                   "uuid": "0e8206c6-b920-4a60-a199-270b5d1738c2"
                 },
                 {
                   "key": "title_publication",
-                  "value": "Testeando Actualizacion",
+                  "value": "Tercera Publicacion (WAOS)",
                   "type": "text",
                   "uuid": "a6295671-95a3-4d21-a854-f0041b85355b"
                 },
@@ -370,7 +370,7 @@
                 },
                 {
                   "key": "content_publication",
-                  "value": "Primera comparacion de seguridad entre 2 cuentas",
+                  "value": "Primera publicacion del programa bro (WAOS)",
                   "type": "text",
                   "uuid": "01eec973-684e-4be2-8e45-b3ba0c6c9f47"
                 },
@@ -378,7 +378,7 @@
                   "key": "image_publication",
                   "type": "file",
                   "uuid": "1581a878-a5d4-4e7a-973d-dcc414337bbc",
-                  "src": "/C:/Users/Clara Lopez/Desktop/sebas/perro waos.jpg"
+                  "src": "/C:/Users/Informatica/Downloads/amongus qlon.png"
                 }
               ]
             },
@@ -547,7 +547,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfTVo4Tjk4elRLaWhBIiwianRpIjoiZWY4MDgxMWEtMzRjYS00ZDk1LWIxZmMtNDBiYjc3YzAyZjVkIiwiaWF0IjoxNzcxNTQ4NzExLCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxNTUwNTExLCJhdWQiOiJBdXRoU2VydmljZSIsImlzcyI6IkF1dGhTZXJ2aWNlIn0.-SIeea01PqBnZVWjB05_tZf11oqUcIv3bXzvYH_fLtw",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfMzJUWWVFdHYyQVNQIiwianRpIjoiNGQwM2FlMGUtZDRjMC00OGM5LWFlMzktN2EwMDM2NjhjZmIyIiwiaWF0IjoxNzcxNjA1NDc3LCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxNjA3Mjc3LCJhdWQiOiJBdXRoU2VydmljZSIsImlzcyI6IkF1dGhTZXJ2aWNlIn0.kDxiVMkuboa5oGLjKnF842HaCS1wumvCAY5KOM2vroA",
                   "type": "string"
                 }
               ]
@@ -564,7 +564,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3005/api/v1/publications/6997909ec8572a9fe4569a9b",
+              "raw": "http://localhost:3005/api/v1/publications/69986eb82ae902ad51e570bc",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -574,7 +574,7 @@
                 "api",
                 "v1",
                 "publications",
-                "6997909ec8572a9fe4569a9b"
+                "69986eb82ae902ad51e570bc"
               ]
             }
           },
@@ -642,6 +642,147 @@
                 "v1",
                 "publications",
                 "699790d3c8572a9fe4569a9d"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "COMMENT",
+      "item": [
+        {
+          "name": "ADD_COMMENT",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"publication_comment\": \"69988af89c1bae9e9c9731ec\",\r\n    \"content_comment\": \"Esta mal unu (no edita)\",\r\n    \"comment_rating\": 4\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/comments/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_COMMENTS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/api/v1/comments/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE_COMMENT_BY_ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfNUtTNzNuR3o2VHBwIiwianRpIjoiMzU1NWFhZTMtOTlhZC00NTU5LTkwMzktODBhZmM0MWM3MmFlIiwiaWF0IjoxNzcxNjA1MDMwLCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxNjA2ODMwLCJhdWQiOiJBdXRoU2VydmljZSIsImlzcyI6IkF1dGhTZXJ2aWNlIn0.y5F3bpLmcDz-Bpb3YVS4tk6ggydAGOAj4IfvW81-UJc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"content_comment\": \"Este es mi  nuevo comentario\",\r\n    \"comment_rating\": 5\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/api/v1/comments/69988af89c1bae9e9c9731ec",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                "69988af89c1bae9e9c9731ec"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE_COMMMENT",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfNUtTNzNuR3o2VHBwIiwianRpIjoiZTEwYTE0OWMtMGFlZS00MGI3LTk4MzItYzhkNTU2NDNjYjdmIiwiaWF0IjoxNzcxNjA1NzQyLCJyb2xlIjoiVVNFUl9ST0xFIiwiZXhwIjoxNzcxNjA3NTQyLCJhdWQiOiJBdXRoU2VydmljZSIsImlzcyI6IkF1dGhTZXJ2aWNlIn0.3nhEoSM1OgkOL6bfRjJVUZ5dO-CcgyIr-XpPYscF2Gk",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/api/v1/comments/6998771dc08c89b43a681b71",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "api",
+                "v1",
+                "comments",
+                "6998771dc08c89b43a681b71"
               ]
             }
           },
