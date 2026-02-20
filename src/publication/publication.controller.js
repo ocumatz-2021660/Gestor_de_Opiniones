@@ -86,3 +86,28 @@ export const getPublications = async(req,res)=>{
         });
     }
 };
+
+export const getPublicationById = async (req, res) =>{
+    try{
+        const {id} = req.params;
+
+        const publication = await Publication.findById(id);
+        if(!publication){
+            return res.status(404).json({
+                success: false,
+                message: 'No se encontro la publicacion',
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            data: formatPublication(publication),
+        });
+
+    }catch(error){
+        return res.status(400).json({
+            success: false,
+            message: 'Error al obtener la publicacion',
+            error: error.message,
+        });
+    }
+}
