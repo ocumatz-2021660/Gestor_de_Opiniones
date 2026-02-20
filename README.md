@@ -9,7 +9,7 @@
 -- Instrucciones de uso
 1. Registrar una cuenta nueva en endpoint postman (AUTH > USERS)(re confirmacion de contraseña).
 2. Verificar la cuenta (AUTH > VERIFI EMAIL)
-3. Iniciar Sesion en la cuenta (AUTH > INICIAR SESION) (guardar token de authenticacion para más (fucnionalidades)(5 intentos maximos de inicio de seion).
+3. Iniciar Sesion en la cuenta (AUTH > INICIAR SESION) (guardar token de authenticacion para más fucnionalidades)(5 intentos maximos de inicio de seion).
 -- (opcional): Generar otra cuenta para comparaciones de seguridad futuras.
 -- (opcional): cambiar contraseña por medio de token
 -- (opcional): ver pefil con token propio.
