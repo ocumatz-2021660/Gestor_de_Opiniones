@@ -156,9 +156,9 @@ export const updatePublication = async (req, res) => {
         }
         await publication.save();
         return res.status(200).json({
-           success: true,
-           message: 'Actualizacion exitosa' ,
-           data: formatPublication(publication),
+            success: true,
+            message: 'Actualizacion exitosa',
+            data: formatPublication(publication),
         });
 
     } catch (error) {
@@ -169,3 +169,39 @@ export const updatePublication = async (req, res) => {
         })
     }
 };
+
+export const deletePublication = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+
+        const publication = await Publication.findById(id);
+        if (!publication) {
+            return res.status(404).json({
+                success: false,
+                message: 'No se encontro la publicacion',
+            });
+        }
+        if (publication.author_publication !== req.userId) {
+            return res.status(403).json({
+                success: false,
+                message: 'No tienes permiso para eliminar esta publicación',
+            });
+        }
+        if (publication.image_publication) {
+            await deleteImage(publication.image_publication).catch(() => { });
+        }
+        await Publication.findByIdAndDelete(id);
+        return res.status(200).json({
+            success: true,
+            message: 'Publicacion eliminada exitosamente',
+        });
+
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: 'Error al eliminar publicacion',
+            error: error.message,
+        });
+    }
+}

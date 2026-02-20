@@ -6,6 +6,7 @@ import {
   getPublications,
   getPublicationById,
   updatePublication,
+  deletePublication,
 } from './publication.controller.js';
 import { validateJWT } from '../../middlewares/validate-JWT.js';
 import { optionalImageUpload } from '../../middlewares/optional-imagen-upload.js';
@@ -19,5 +20,7 @@ router.get('/', getPublications);
 router.get('/:id', getPublicationById);
 
 router.put('/:id', [validateJWT, optionalImageUpload], updatePublication);
+
+router.delete('/:id', [validateJWT], deletePublication);
 
 export default router;
