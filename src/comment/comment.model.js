@@ -5,12 +5,12 @@ import mongoose, { version } from 'mongoose';
 const commentSchema = new mongoose.Schema(
     {
         author_comment:{
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             required: [true,'The author of comment is required'],
         },
         publication_comment: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'Publication',
             required: [true,'The id of publication is required'],
         },
