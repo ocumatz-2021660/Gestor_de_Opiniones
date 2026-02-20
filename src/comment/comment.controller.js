@@ -92,3 +92,22 @@ export const updateComment = async (req, res) => {
         });
     }
 };
+
+export const deleteComment = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Comment.findByIdAndDelete(id);
+
+        return res.status(200).json({
+            success: true,
+            message: 'Comentario eliminado exitosamente'
+        });
+
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: 'Error al eliminar el comentario',
+            error: error.message
+        });
+    }
+};
